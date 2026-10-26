@@ -12,7 +12,24 @@
 // 5. After the loop, call player.showStats() to show total time and average time per riddle.
 import PromptSync from 'prompt-sync';
 import AllRiddles from './riddles/index.js';
+import Player from './classes/Player.js';
+import Riddle from './classes/Riddle.js';
+
+
 const prompt = PromptSync();
+
 console.log('welcome to Riddle games!')
-let inputName=prompt(`wath's is your name?`)
-const player1=new Player(inputName)
+let inputName = prompt(`wath's is your name?`)
+const player1 = new Player(inputName)
+
+AllRiddles.forEach(riddle => {
+    let startTime = Date.now();
+    const newRiddle = new Riddle(riddle.id, riddle.name, riddle.taskDescription, riddle.correctAnswer)
+    newRiddle.ask(prompt);
+    let endTime = Date.now();
+    player1.recordTime(startTime, endTime)
+
+});
+player1.showStats();
+
+

@@ -11,7 +11,7 @@
 //   - show the riddle (name and taskDescription) to the player
 //   - ask the player for an answer using the `prompt` function that is passed in
 //   - keep asking until the answer is correct
-class Riddle {
+export default class Riddle {
     constructor(id, name, taskDescription, correctAnswer) {
         this.id = id
         this.name = name
@@ -19,12 +19,11 @@ class Riddle {
         this.correctAnswer = correctAnswer
     }
     ask(prompt) {
-        console.log('welcome to Riddle game!');
         console.log(`Riddle:${this.taskDescription}`)
         let userInput = ''
         userInput = prompt( 'what your answer?');
         while (userInput.trim().toLowerCase() !== this.correctAnswer.toLowerCase()) {
-                userInput=prompt('the answer mistake!\n try again')
+                userInput=prompt('the answer mistake!\n try again\n')
         }
         console.log('well done!corecct answer!')
     }
