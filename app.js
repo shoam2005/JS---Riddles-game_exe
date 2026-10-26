@@ -21,15 +21,35 @@ const prompt = PromptSync();
 console.log('welcome to Riddle games!')
 let inputName = prompt(`wath's is your name?`)
 const player1 = new Player(inputName)
+const level = prompt('Choose difficulty:easy/medium/hard')
 
 AllRiddles.forEach(riddle => {
-    let startTime = Date.now();
-    const newRiddle = new Riddle(riddle.id, riddle.name, riddle.taskDescription, riddle.correctAnswer)
-    newRiddle.ask(prompt);
-    let endTime = Date.now();
-    player1.recordTime(startTime, endTime)
+
+
+    if (riddle.difficulty === level) {
+
+        const newRiddle = new Riddle(riddle.id, riddle.name, riddle.taskDescription, riddle.correctAnswer,riddle.difficulty,riddle.timeLimit,riddle.hint)
+        let startTime = Date.now();
+        newRiddle.ask(prompt);
+        let endTime = Date.now();
+        if ((endTime - startTime) / 1000 > riddle.timeLimit) {
+            riddle.penalty ? player1.recordTime(startTime / 1000, (endTime / 1000) + 15) : player1.recordTime(startTime / 1000, (endTime / 1000) + 5)
+            console.log("Too slow! 5 seconds penalty applied")
+        }
+        else
+            riddle.penalty ? player1.recordTime(startTime / 1000, (endTime / 1000) + 10) : player1.recordTime(startTime / 1000, endTime / 1000)
+
+    }
+
 
 });
+for (let i = AllRiddles.length - 1; i > 0; i--) {
+        
+        const j = Math.floor(Math.random() * (i + 1));
+        
+        [AllRiddles[i], AllRiddles[j]] = [AllRiddles[j], AllRiddles[i]];
+    }
+    console.log(AllRiddles)
 player1.showStats();
 
 

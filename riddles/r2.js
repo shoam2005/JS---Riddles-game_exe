@@ -5,8 +5,12 @@
 // - taskDescription (string, the riddle text shown to the player)
 // - correctAnswer (string)
 export default {
-  id: 2,
-  name: "Basic Geography",
-  taskDescription: "What is the capital of France?",
-  correctAnswer: "Paris"
+    id: 2,
+    name: "Basic Geography",
+    taskDescription: "What is the capital of France?",
+    correctAnswer: "Paris",
+    difficulty: 'medium',
+    timeLimit:5,
+    hint:'hint'
+
 };

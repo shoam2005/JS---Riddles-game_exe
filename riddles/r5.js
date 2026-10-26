@@ -8,5 +8,8 @@ export default {
   id: 5,
   name: "Simple Science",
   taskDescription: "What is the chemical symbol for water?",
-  correctAnswer: "H2O"
+  correctAnswer: "H2O",
+  difficulty:'easy',
+  timeLimit:5,
+  hint:'hint'
 };
