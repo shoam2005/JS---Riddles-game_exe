@@ -4,3 +4,9 @@
 // - name (string)
 // - taskDescription (string, the riddle text shown to the player)
 // - correctAnswer (string)
+export default {
+  id: 3,
+  name: "Word Length",
+  taskDescription: "How many letters are in the word 'JavaScript'?",
+  correctAnswer: "10"
+};
